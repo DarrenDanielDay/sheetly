@@ -1,0 +1,12 @@
+{
+  "name": "sheetly",
+  "version": "0.1.0",
+  "description": "A simple library for creating CSSStyleSheet with css code.",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "scripts": {
+    "build": "exit 0",
+    "test": "exit 0"
+  }
+}
