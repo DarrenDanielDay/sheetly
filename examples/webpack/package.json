@@ -1,0 +1,32 @@
+{
+  "name": "@sheetly/webpack-example",
+  "private": true,
+  "version": "0.0.0",
+  "description": "webpack usage example for sheetly",
+  "type": "module",
+  "scripts": {
+    "start": "run-p start:*",
+    "start:sheetly": "sheetly watch -d src --hmr webpack",
+    "start:webpack": "webpack serve",
+    "build": "run-s build:sheetly build:webpack",
+    "build:sheetly": "sheetly build -d src",
+    "build:webpack": "webpack build"
+  },
+  "keywords": [],
+  "author": {
+    "email": "Darren_Daniel_Day@hotmail.com",
+    "name": "Darren Daniel Day",
+    "url": "https://github.com/DarrenDanielDay"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "sheetly": "latest"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

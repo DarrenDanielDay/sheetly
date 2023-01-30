@@ -13,6 +13,11 @@
     "CSSStyleSheet"
   ],
   "bin": "./bin/cli.js",
+  "author": {
+    "email": "Darren_Daniel_Day@hotmail.com",
+    "name": "Darren Daniel Day",
+    "url": "https://github.com/DarrenDanielDay"
+  },
   "scripts": {
     "start": "tsc -w",
     "build": "tsc",

@@ -12,9 +12,10 @@ npm install sheetly
 
 ## API
 
-- `js` for generating JavaScript code in ESM format
-- `ts` for generating TypeScript declaration code
-- `create` for the browser runtime
+- `js`: generate JavaScript code in ESM format
+- `ts`: generate TypeScript declaration code
+- `create`: create `CSSStyleSheet` object with browser runtime
+- `addSheet`: utility to add stylesheet to document or shadow root
 
 Usage:
 

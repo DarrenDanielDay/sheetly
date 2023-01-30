@@ -1,0 +1,5 @@
+.parcel-cache
+node_modules
+dist
+*.css.js
+*.css.d.ts

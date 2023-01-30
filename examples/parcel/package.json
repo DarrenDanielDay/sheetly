@@ -1,0 +1,29 @@
+{
+  "name": "@sheetly/parcel-example",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Parcel usage example for sheetly",
+  "type": "module",
+  "scripts": {
+    "start": "run-p start:*",
+    "start:sheetly": "sheetly watch -d src --hmr parcel",
+    "start:parcel": "parcel ./index.html",
+    "build": "run-s build:sheetly build:parcel",
+    "build:sheetly": "sheetly build -d src",
+    "build:parcel": "parcel build ./index.html"
+  },
+  "keywords": [],
+  "author": {
+    "email": "Darren_Daniel_Day@hotmail.com",
+    "name": "Darren Daniel Day",
+    "url": "https://github.com/DarrenDanielDay"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "sheetly": "latest"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.8.3"
+  }
+}
