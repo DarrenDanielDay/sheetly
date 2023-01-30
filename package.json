@@ -12,12 +12,6 @@
     "created stylesheet",
     "CSSStyleSheet"
   ],
-  "files": [
-    "index.js",
-    "index.d.ts",
-    "client.d.ts",
-    "bin"
-  ],
   "bin": "./bin/cli.js",
   "scripts": {
     "start": "tsc -w",
