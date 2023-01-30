@@ -1,6 +1,15 @@
 # sheetly
 
-A simple library for creating CSSStyleSheet with css code.
+A simple library for creating CSSStyleSheet with CSS source code.
+
+## Example
+
+with tool chain|example
+-|-
+parcel|[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/DarrenDanielDay/sheetly/tree/main/examples/parcel)
+vite|[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/DarrenDanielDay/sheetly/tree/main/examples/vite)
+webpack|[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/DarrenDanielDay/sheetly/tree/main/examples/webpack)
+
 
 ## Install
 
@@ -96,6 +105,8 @@ Options:
 ```
 
 The `--hmr` option is only available for `watch` command. When specified, `sheetly` will add `HMR` code in the generated JavaScript code.
+
+
 
 ## Known issues
 
