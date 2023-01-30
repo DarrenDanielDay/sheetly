@@ -1,4 +1,4 @@
 declare module "*.css.js" {
-  export declare let text: string;
-  export declare const sheet: CSSStyleSheet;
+  export let text: string;
+  export const sheet: CSSStyleSheet;
 }

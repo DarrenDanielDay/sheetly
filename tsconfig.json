@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "resolveJsonModule": true
+  },
+  "include": ["."]
+}

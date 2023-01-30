@@ -8,9 +8,10 @@
 
 /**
  * Generate the JavaScript code in ESM format.
- * @param {string} code the css code
+ * @param code the css code
+ * @returns the generated JavaScript code
  */
-export const js = (code) => {
+export const js = (code: string): string => {
   return `\
 import { create } from "sheetly";
 export let text = ${JSON.stringify(code)};
@@ -20,9 +21,9 @@ export const sheet = create(text, import.meta.url);
 
 /**
  * Generate the TypeScript declaration code for the JavaScript code.
- * @returns {string}
+ * @returns the generated declaration code
  */
-export const ts = () => {
+export const ts = (): string => {
   return `\
 export declare let text: string;
 export declare const sheet: CSSStyleSheet;
@@ -35,7 +36,7 @@ export declare const sheet: CSSStyleSheet;
  * @param {string} baseURL the base url if you want to use `@import`
  * @returns a created style sheet
  */
-export const create = (code, baseURL) => {
+export const create = (code: string, baseURL: string): CSSStyleSheet => {
   const sheet = new CSSStyleSheet({ baseURL })
   sheet.replaceSync(code);
   return sheet;
@@ -43,9 +44,9 @@ export const create = (code, baseURL) => {
 
 /**
  * Add a CSSStyleSheet to the given document.
- * @param {DocumentOrShadowRoot} doc the document or shadow root
- * @param {CSSStyleSheet} sheet the CSSStyleSheet object
+ * @param doc the document or shadow root
+ * @param sheet the CSSStyleSheet object
  */
-export const addSheet = (doc, sheet) => {
+export const addSheet = (doc: DocumentOrShadowRoot, sheet: CSSStyleSheet): void => {
   doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, sheet];
 }
