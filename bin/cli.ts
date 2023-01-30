@@ -27,22 +27,28 @@ type CLIOptions = {
 };
 
 type EmitConfig = {
+  mode: "development" | "production";
   file: string;
   types: boolean;
   hmr?: HMRType;
 };
 
-const emit = async ({ file, types, hmr }: EmitConfig) => {
+const emit = async ({ file, types, hmr, mode }: EmitConfig) => {
   const src = await readFile(file, "utf-8");
-  const { styles } = await new CleanCSS({
-    returnPromise: true,
-  }).minify(src);
+  const styles =
+    mode === "production"
+      ? (
+          await new CleanCSS({
+            returnPromise: true,
+          }).minify(src)
+        ).styles
+      : src;
   const jsFile = `${file}.js`;
   let jsCode = js(styles);
   if (typeof hmr === "string" && hmr in hmrCode) {
     jsCode += hmrCode[hmr];
   }
-  const tasks =  [writeFile(jsFile, jsCode, "utf-8")];
+  const tasks = [writeFile(jsFile, jsCode, "utf-8")];
   if (types) {
     const tsCode = ts();
     const tsFile = `${file}.d.ts`;
@@ -53,7 +59,9 @@ const emit = async ({ file, types, hmr }: EmitConfig) => {
 
 const build = async ({ dir, types, hmr }: CLIOptions) => {
   const files = await glob(`${dir}/**/*.css`);
-  await Promise.all(files.map((file) => emit({ file, types, hmr })));
+  await Promise.all(
+    files.map((file) => emit({ file, types, hmr, mode: "production" }))
+  );
 };
 
 program
@@ -76,14 +84,18 @@ program
   .command("watch")
   .requiredOption("-d, --dir <string>", "directory to search css files")
   .option("-t, --types", "whether to generate declaration files", true)
-  .option("--hmr <string>", `optional HMR code type. surpported values: parcel, vite, webpack`, undefined)
+  .option(
+    "--hmr <string>",
+    `optional HMR code type. surpported values: parcel, vite, webpack`,
+    undefined
+  )
   .action(async ({ dir, types, hmr }) => {
     await build({ dir, types, hmr });
     watch(dir).on("all", (_, file) => {
       if (!file.endsWith(".css")) {
         return;
       }
-      emit({ file, types, hmr });
+      emit({ file, types, hmr, mode: "development" });
     });
   });
 
