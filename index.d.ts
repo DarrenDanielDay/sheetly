@@ -8,3 +8,4 @@
 export declare const js: (code: string) => string;
 export declare const ts: () => string;
 export declare const create: (code: string, baseURL: string) => CSSStyleSheet;
+export declare const addSheet: (doc: DocumentOrShadowRoot, sheet: CSSStyleSheet) => void;

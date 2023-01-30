@@ -40,3 +40,12 @@ export const create = (code, baseURL) => {
   sheet.replaceSync(code);
   return sheet;
 }
+
+/**
+ * Add a CSSStyleSheet to the given document.
+ * @param {DocumentOrShadowRoot} doc the document or shadow root
+ * @param {CSSStyleSheet} sheet the CSSStyleSheet object
+ */
+export const addSheet = (doc, sheet) => {
+  doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, sheet];
+}
