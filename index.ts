@@ -7,30 +7,6 @@
  */
 
 /**
- * Generate the JavaScript code in ESM format.
- * @param code the css code
- * @returns the generated JavaScript code
- */
-export const js = (code: string): string => {
-  return `\
-import { create } from "sheetly";
-export let text = ${JSON.stringify(code)};
-export const sheet = create(text, import.meta.url);
-`
-}
-
-/**
- * Generate the TypeScript declaration code for the JavaScript code.
- * @returns the generated declaration code
- */
-export const ts = (): string => {
-  return `\
-export declare let text: string;
-export declare const sheet: CSSStyleSheet;
-`
-}
-
-/**
  * Create a CSSStyleSheet.
  * @param {string} code the css code
  * @param {string} baseURL the base url if you want to use `@import`

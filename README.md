@@ -13,7 +13,7 @@ Usage:
 In your compiler:
 
 ```js
-import { js, ts } from "sheetly";
+import { js, ts } from "sheetly/transpile";
 import { readFile, writeFile } from "fs/promises";
 const content = await readFile("/path/to/your.css", 'utf-8');
 // Generate JavaScript code. 
