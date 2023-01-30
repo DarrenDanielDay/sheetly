@@ -13,16 +13,19 @@
  * @returns a created style sheet
  */
 export const create = (code: string, baseURL: string): CSSStyleSheet => {
-  const sheet = new CSSStyleSheet({ baseURL })
+  const sheet = new CSSStyleSheet({ baseURL });
   sheet.replaceSync(code);
   return sheet;
-}
+};
 
 /**
  * Add a CSSStyleSheet to the given document.
- * @param doc the document or shadow root
  * @param sheet the CSSStyleSheet object
+ * @param doc the document or shadow root
  */
-export const addSheet = (doc: DocumentOrShadowRoot, sheet: CSSStyleSheet): void => {
+export const addSheet = (
+  sheet: CSSStyleSheet,
+  doc: DocumentOrShadowRoot = document
+): void => {
   doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, sheet];
-}
+};
