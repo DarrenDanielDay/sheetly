@@ -14,10 +14,12 @@ import { default as CleanCSS } from "clean-css";
 import G from "glob";
 import { promisify } from "util";
 import { program } from "commander";
-import packageJson from "../package.json" assert { type: "json" };
 import { js, ts } from "../transpile.js";
 import { hmrCode, type HMRType } from "../hmr.js";
-
+import { resolve } from "path";
+const packageJson: typeof import("../package.json") = JSON.parse(
+  await readFile(resolve(process.cwd(), "package.json"), "utf-8")
+);
 const glob = promisify(G.glob);
 
 type CLIOptions = {
