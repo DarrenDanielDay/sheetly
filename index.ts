@@ -29,3 +29,8 @@ export const addSheet = (
 ): void => {
   doc.adoptedStyleSheets = doc.adoptedStyleSheets.concat(sheet);
 };
+
+/**
+ * Alias of `String.raw`, just for css syntax highlight with some editors.
+ */
+export const css = String.raw;
