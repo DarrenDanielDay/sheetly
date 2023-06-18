@@ -20,12 +20,12 @@ export const create = (code: string, baseURL: string): CSSStyleSheet => {
 
 /**
  * Add a CSSStyleSheet to the given document.
- * @param sheet the CSSStyleSheet object
+ * @param sheet the CSSStyleSheet object or a list of them
  * @param doc the document or shadow root
  */
 export const addSheet = (
-  sheet: CSSStyleSheet,
+  sheet: CSSStyleSheet | CSSStyleSheet[],
   doc: DocumentOrShadowRoot = document
 ): void => {
-  doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, sheet];
+  doc.adoptedStyleSheets = doc.adoptedStyleSheets.concat(sheet);
 };
