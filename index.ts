@@ -8,11 +8,11 @@
 
 /**
  * Create a CSSStyleSheet.
- * @param {string} code the css code
- * @param {string} baseURL the base url if you want to use `@import`
+ * @param code the css code
+ * @param baseURL optional base url if you want to use `url()` in it
  * @returns a created style sheet
  */
-export const create = (code: string, baseURL: string): CSSStyleSheet => {
+export const create = (code: string, baseURL?: string): CSSStyleSheet => {
   const sheet = new CSSStyleSheet({ baseURL });
   sheet.replaceSync(code);
   return sheet;
@@ -31,6 +31,13 @@ export const addSheet = (
 };
 
 /**
- * Alias of `String.raw`, just for css syntax highlight with some editors.
+ * Create style sheet with `String.raw`, just for css syntax highlight with some editors.
+ * `baseURL` will always be undefined.
+ * @param template A well-formed template string call site representation.
+ * @param substitutions A set of substitution values.
+ * @returns `CSSStyleSheet` created with template string
  */
-export const css = String.raw;
+export const css = (
+  templates: TemplateStringsArray,
+  ...substitutions: any[]
+): CSSStyleSheet => create(String.raw(templates, ...substitutions));
